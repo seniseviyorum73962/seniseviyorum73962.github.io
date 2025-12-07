@@ -19,17 +19,17 @@
 
     #ui {
         position: relative;
-        width: 350px;
-        height: 350px;
+        width: 500px;
+        height: 500px;
     }
 
-    /* ORTA YAZI (DÜZELTİLDİ) */
+    /* ORTA YAZI – TEMAS ETMESİN DİYE YUKARI ALINDI */
     #center-name {
         position: absolute;
-        left: 175px;      /* tam merkez */
-        top: 175px;       /* tam merkez */
-        transform: translate(-50%, -50%);
-        font-size: 2.8rem;
+        left: 250px;
+        top: 250px;
+        transform: translate(-50%, -50%) translateY(-20px);
+        font-size: 3rem;
         font-weight: bold;
         color: #ff66cc;
         text-shadow: 0 0 20px #ff99dd, 0 0 40px #ff44cc;
@@ -44,7 +44,6 @@
         font-size: 1.4rem;
         transform: translateY(-100%) rotateZ(-30deg);
         text-shadow: 0 0 10px #fff;
-        letter-spacing: 2px;
         white-space: nowrap;
         opacity: 0.9;
     }
@@ -80,11 +79,12 @@ for (let i = 0; i < count; i++) {
 
     let angle = (i / count) * Math.PI * 2;
 
+    // KALP BÜYÜYOR – ÇARPAN 10 → 15 YAPILDI
     let x = 16 * Math.pow(Math.sin(angle), 3);
     let y = 13 * Math.cos(angle) - 5 * Math.cos(2 * angle) - 2 * Math.cos(3 * angle) - Math.cos(4 * angle);
 
-    span.style.left = `${x * 10 + 175}px`;
-    span.style.top = `${-y * 10 + 175}px`;
+    span.style.left = `${x * 15 + 250}px`;
+    span.style.top = `${-y * 15 + 250}px`;
     span.style.setProperty("--i", i);
     span.textContent = text;
 
