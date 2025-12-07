@@ -2,68 +2,70 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Kalp Animasyonu</title>
+<title>Şeyma</title>
 <style>
     body {
         margin: 0;
-        height: 100vh;
         background: black;
+        height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
         overflow: hidden;
     }
 
-    .heart {
-        width: 260px;   /* 🔥 Kalp büyütüldü */
-        height: 260px;
+    .wrapper {
         position: relative;
-        transform: rotate(45deg);
-        animation: beat 1.3s infinite;
+        width: 250px;   /* KALP BOYUTU */
+        height: 250px;
+        animation: rotate 3s linear infinite;
     }
 
-    .heart::before,
-    .heart::after {
-        content: "";
-        width: 260px;
-        height: 260px;
+    .circle {
+        position: absolute;
+        width: 180px;   /* DAİRE BOYUTU */
+        height: 180px;
         background: red;
         border-radius: 50%;
+        top: 35px;
+    }
+
+    .left {
+        left: -10px;
+    }
+
+    .right {
+        right: -10px;
+    }
+
+    /* Animasyon */
+    @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* Ortadaki yazı */
+    .text {
         position: absolute;
-    }
-
-    .heart::before {
-        left: -130px;
-    }
-
-    .heart::after {
-        top: -130px;
-    }
-
-    @keyframes beat {
-        0%, 100% { transform: rotate(45deg) scale(1); }
-        50% { transform: rotate(45deg) scale(1.25); }
-    }
-
-    .name {
-        position: absolute;
-        color: white;
-        font-size: 38px;
-        font-family: Arial, sans-serif;
-        font-weight: bold;
-        text-shadow: 0 0 15px red;
-        transform: rotate(-45deg); /* Kalp döndüğü için yazıyı geri çeviriyoruz */
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%) rotate(-45deg); /* Tam merkez */
+        transform: translate(-50%, -50%) rotate(45deg); /* KALPLE UYUMLU */
+        font-size: 28px;
+        font-weight: bold;
+        color: white;
+        font-family: Arial;
         pointer-events: none;
+        text-shadow: 0 0 10px white;
     }
 </style>
 </head>
 <body>
 
-<div class="heart"></div>
-<div class="name">ŞEYMA</div>
+<div class="wrapper">
+    <div class="circle left"></div>
+    <div class="circle right"></div>
+    <div class="text">ŞEYMA</div>
+</div>
 
 </body>
 </html>
