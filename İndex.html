@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Heart Animation</title>
+
+<style>
+
+    body {
+        margin: 0;
+        height: 100vh;
+        background: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        font-family: sans-serif;
+    }
+
+    #ui {
+        position: relative;
+        width: 350px;
+        height: 350px;
+    }
+
+    /* ORTA YAZI */
+    #center-name {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 2.8rem;
+        font-weight: bold;
+        color: #ff66cc;
+        text-shadow: 0 0 20px #ff99dd, 0 0 40px #ff44cc;
+        z-index: 10;
+        letter-spacing: 3px;
+    }
+
+    /* KALP YAZILARI */
+    #ui .love_word {
+        position: absolute;
+        color: #ea80b0;
+        font-size: 1.4rem;
+        transform: translateY(-100%) rotateZ(-30deg);
+        text-shadow: 0 0 10px #fff;
+        letter-spacing: 2px;
+        white-space: nowrap;
+        opacity: 0.9;
+    }
+
+    #ui .love_horizontal {
+        animation: horizontal 10000ms infinite alternate ease-in-out;
+        animation-delay: calc(var(--i) * -300ms);
+    }
+
+    @keyframes horizontal {
+        0% { transform: translateX(-40px) translateY(-100%) rotateZ(-30deg); }
+        100% { transform: translateX(40px) translateY(-100%) rotateZ(-30deg); }
+    }
+
+</style>
+</head>
+<body>
+
+<div id="ui">
+    <div id="center-name">ŞEYMA</div>
+</div>
+
+<script>
+
+const ui = document.getElementById("ui");
+const count = 90;
+const text = "I love you";
+
+for (let i = 0; i < count; i++) {
+
+    const span = document.createElement("span");
+    span.classList.add("love_word", "love_horizontal");
+
+    let angle = (i / count) * Math.PI * 2;
+
+    let x = 16 * Math.pow(Math.sin(angle), 3);
+    let y = 13 * Math.cos(angle) - 5 * Math.cos(2 * angle) - 2 * Math.cos(3 * angle) - Math.cos(4 * angle);
+
+    span.style.left = `${x * 10 + 175}px`;
+    span.style.top = `${-y * 10 + 175}px`;
+    span.style.setProperty("--i", i);
+    span.textContent = text;
+
+    ui.appendChild(span);
+}
+
+</script>
+
+</body>
+</html>
